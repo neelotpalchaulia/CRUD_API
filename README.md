@@ -42,7 +42,7 @@ This project demonstrates a RESTful CRUD(Create, Read, Update and Delete) API bu
 
 Below is a breakdown of the `main.go` file:
 
-### Imports
+### 1. Imports
 
    ```bash
    import (
@@ -58,7 +58,7 @@ Below is a breakdown of the `main.go` file:
     - `net/http`: Provides HTTP client and server implementations.
     - `github.com/gorilla/mux`: A powerful HTTP router and URL matcher for building RESTful APIs.
 
-### Define your Task struct
+### 2. Define your Task struct
 
    ```bash
    type Task struct {
@@ -72,7 +72,7 @@ Below is a breakdown of the `main.go` file:
     - Defines a `Task` struct with fields: `ID`, `Title`, `Description`, and `Status`.
     - The struct tags (`json:"fieldname"`) ensure proper JSON encoding/decoding while sending or receiving data.
 
-### Global Variable
+### 3. Global Variable
 
    ```bash
    var tasks []Task
@@ -82,7 +82,7 @@ Below is a breakdown of the `main.go` file:
     - `tasks`: We declare this slice variable to store the list of tasks.
     - `nextID`: A counter to assign unique IDs to new tasks.
 
-### Create a New Task (POST /tasks)
+### 4. Create a New Task (POST /tasks)
 
    ```bash
    func createTaskHandler_Neel(w http.ResponseWriter, r *http.Request) {
@@ -113,7 +113,7 @@ Below is a breakdown of the `main.go` file:
     - Assigns a unique ID and appends the task to the `tasks` slice.
     - Responds with the created task in JSON format.
 
-### Read All Tasks (GET /tasks)
+### 5. Read All Tasks (GET /tasks)
 
    ```bash
    func getAllTasksHandler_Oviya(w http.ResponseWriter, r *http.Request) {
@@ -129,7 +129,7 @@ Below is a breakdown of the `main.go` file:
 
     - Purpose: This handler checks if the request method is GET and returns the list of tasks in JSON format.
 
-### Get a Task by its ID (GET /tasks/{id})
+### 6. Get a Task by its ID (GET /tasks/{id})
 
    ```bash
    func getTaskByIDHandler_Srinidhi(w http.ResponseWriter, r *http.Request) {
@@ -156,7 +156,7 @@ Below is a breakdown of the `main.go` file:
     - Purpose: This handler checks if the request method is **GET** Fetches a task by ID.
     - Extracts the `id` from the URL, searches for the task within the `tasks` slice, and returns it if found else a 404 error is displayed.
 
-### Update an Existing Task (PUT /tasks/{id})
+### 7. Update an Existing Task (PUT /tasks/{id})
 
    ```bash
    func updateTaskHandler_Nauman(w http.ResponseWriter, r *http.Request) {
@@ -192,7 +192,7 @@ Below is a breakdown of the `main.go` file:
 
     - Purpose: This is very much similar to the GET handler, however it retrieves the ID from the URL, decodes the updated task from the request body, and then updates the task if it exists.
 
-### Delete Task by ID (DELETE /tasks/{id})
+### 8. Delete Task by ID (DELETE /tasks/{id})
 
    ```bash
    func deleteTaskHandler_Anjani(w http.ResponseWriter, r *http.Request) {
@@ -217,7 +217,7 @@ Below is a breakdown of the `main.go` file:
    ```
 
     - Purpose: This handler checks if the method is DELETE, retrieves the ID, and removes the task from the slice if found.
-### Set up Routing 
+### 9. Set up Routing 
 
    ```bash
    func main() {
