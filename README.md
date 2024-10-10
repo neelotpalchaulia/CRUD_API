@@ -1,15 +1,15 @@
-﻿# Building a Simple CRUD API in GO
+#﻿# Building a Simple CRUD API in GO
 
 This project demonstrates a RESTful CRUD(Create, Read, Update and Delete) API built using the GO programmimg language, `net/http` package, and the `gorilla/mux` router. This API manages a collection of tasks which has basic fileds like `ID`, `Title`, `Description`and `Status`.
 
-## Features
+### Features
 
 - Create a Task: Add a new task to the list.
 - Read Tasks: Retrieve a list of all tasks or a single task by its ID.
 - Update a Task: Modify the details of an existing task.
 - Delete a Task: Remove a task from the list.
 
-## Getting Started
+### Getting Started
 
 1. Clone the repository
 
@@ -38,46 +38,46 @@ This project demonstrates a RESTful CRUD(Create, Read, Update and Delete) API bu
     - `PUT /tasks/{id}`: Update a specific task.
     - `DELETE /tasks/{id}`: Delete a specific task.
 
-## Code Explaination
+### Code Explaination
 
 Below is a breakdown of the `main.go` file:
 
-### 1. Imports
+#### 1. Imports
 
-      ```bash
+   ```bash
       import (
       "encoding/json"
       "fmt"
       "net/http"
       "github.com/gorilla/mux"
       )
-      ```
-
-    - `encoding/json`: Handles JSON encoding and decoding.
-    - `fmt`: Formats strings for output.
-    - `net/http`: Provides HTTP client and server implementations.
-    - `github.com/gorilla/mux`: A powerful HTTP router and URL matcher for building RESTful APIs.
+   ```
+      
+- `encoding/json`: Handles JSON encoding and decoding.
+- `fmt`: Formats strings for output.
+- `net/http`: Provides HTTP client and server implementations.
+- `github.com/gorilla/mux`: A powerful HTTP router and URL matcher for building RESTful APIs.
 
 ### 2. Define your Task struct
 
-      ```bash
+```bash
       type Task struct {
       ID          int    `json:"id"`
       Title       string `json:"title"`
       Description string `json:"description"`
       Status      string `json:"status"`
       }
-      ```
+```
 
     - Defines a `Task` struct with fields: `ID`, `Title`, `Description`, and `Status`.
     - The struct tags (`json:"fieldname"`) ensure proper JSON encoding/decoding while sending or receiving data.
 
 ### 3. Global Variable
 
-      ```bash
+   ```bash
       var tasks []Task
       var nextID = 1
-      ```
+   ```
 
     - `tasks`: We declare this slice variable to store the list of tasks.
     - `nextID`: A counter to assign unique IDs to new tasks.
