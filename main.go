@@ -67,12 +67,31 @@ func getTaskByIDHandler_Srinidhi(w http.ResponseWriter, r *http.Request) {
 // Update function (Update a task based on ID) created by Nauman
 
 // Delete function (Delete a task based on ID) created by Anjani
+func deleteTaskHandler_Anjani(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodDelete {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
 
+	// id := r.URL.Path[len("/tasks/"):] // Extract ID from URL
+	id := mux.Vars(r)["id"]
+	for i, task := range tasks {
+		filtered_id := fmt.Sprintf("%d", task.ID)
+		if filtered_id == id {
+			tasks = append(tasks[:i], tasks[i+1:]...) // Remove task from slice
+			w.WriteHeader(http.StatusNoContent)       // No content
+			return
+		}
+	}
+
+	http.Error(w, "Task not found", http.StatusNotFound)
+}
 func main() {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/tasks", createTaskHandler_Neel).Methods("POST") // Handle POST /tasks
 	router.HandleFunc("/tasks/{id}", getTaskByIDHandler_Srinidhi).Methods("GET") // Handle GET /tasks/{id}
+	router.HandleFunc("/tasks/{id}", deleteTaskHandler_Anjani).Methods("DELETE") // Handle DELETE /tasks/{id}
 	fmt.Println("Server is running on port :8080")
 	http.ListenAndServe(":8080", router)
 }
