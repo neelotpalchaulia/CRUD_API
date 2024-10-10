@@ -284,13 +284,13 @@ To test this API once the server is up and running, you can use tools like **Pos
     - Enter the URL: `http://localhost:8080/tasks/1` (replace 1 with the ID of the task you want to update).
     - Go to the **Body** tab > **raw** > **JSON format** and enter the updated details:
 
-    ```bash
-    {
-        "title": "Updated Sample Task",
-        "description": "This is an updated test task",
-        "status": "completed"
-    }
-    ```
+      ```bash
+          {
+              "title": "Updated Sample Task",
+              "description": "This is an updated test task",
+              "status": "completed"
+          }
+      ```
 
     - Once sent, the output displays the updated task's JSON in the response.
 
