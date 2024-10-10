@@ -1,4 +1,4 @@
-#﻿# Building a Simple CRUD API in GO
+## Building a Simple CRUD API in GO
 
 This project demonstrates a RESTful CRUD(Create, Read, Update and Delete) API built using the GO programmimg language, `net/http` package, and the `gorilla/mux` router. This API manages a collection of tasks which has basic fileds like `ID`, `Title`, `Description`and `Status`.
 
