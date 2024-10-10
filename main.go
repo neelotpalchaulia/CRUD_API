@@ -42,6 +42,16 @@ func createTaskHandler_Neel(w http.ResponseWriter, r *http.Request) {
 
 // Read function - to retrieve all created/existings tasks by Oviya
 
+func getAllTasksHandler_Oviya(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(tasks)
+}
+
 // Read function - to retireve a specific task wrt its ID by Srinidhi
 
 func getTaskByIDHandler_Srinidhi(w http.ResponseWriter, r *http.Request) {
@@ -119,6 +129,7 @@ func main() {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/tasks", createTaskHandler_Neel).Methods("POST")          // Handle POST /tasks
+	router.HandleFunc("/tasks", getAllTasksHandler_Oviya).Methods("GET")         // Handle GET /tasks
 	router.HandleFunc("/tasks/{id}", getTaskByIDHandler_Srinidhi).Methods("GET") // Handle GET /tasks/{id}
 	router.HandleFunc("/tasks/{id}", updateTaskHandler_Nauman).Methods("PUT")    // Handle PUT /tasks/{id}
 	router.HandleFunc("/tasks/{id}", deleteTaskHandler_Anjani).Methods("DELETE") // Handle DELETE /tasks/{id}
