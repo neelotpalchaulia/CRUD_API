@@ -72,7 +72,7 @@ func main() {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/tasks", createTaskHandler_Neel).Methods("POST") // Handle POST /tasks
-
+	router.HandleFunc("/tasks/{id}", getTaskByIDHandler_Srinidhi).Methods("GET") // Handle GET /tasks/{id}
 	fmt.Println("Server is running on port :8080")
 	http.ListenAndServe(":8080", router)
 }
