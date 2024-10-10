@@ -237,3 +237,65 @@ Below is a breakdown of the `main.go` file:
 
       - Sets up routes for the API endpoints.
       - Uses `gorilla/mux` for routing and starts an HTTP server on port `8080`.
+
+### Testing the API
+
+To test this API once the server is up and running, you can use tools like **Postman**, **cURL** or even via the browser (for simple GET requests).
+
+#### Prerequisites
+
+1. Ensure that the server is running on `http://localhost:8080`.
+
+2. You have Gorilla Mux installed and the server is compiled without any errors.
+
+#### Testing with Postman
+
+1. Create a New Task (POST /tasks)
+
+    - Open Postman, initiate a new request and select **POST**.
+    - Enter the URL: `http://localhost:8080/tasks`
+    - Go to the **Body** tab > **raw** > **JSON format** and enter the following:
+      
+      ```bash
+        {
+            "title": "Sample Task",
+            "description": "This is a test task",
+            "status": "pending"
+        }
+      ```
+    
+    - A response with the created task must appear, including its assigned `ID`.
+
+2. Get All tasks (GET / tasks)
+
+    - Select **GET**.
+    - Enter the URL: `http://localhost:8080/tasks`
+    - Once sent, the output shows a list of all tasks in JSON format.
+
+3. Get a Task by ID (GET /tasks/{id})
+
+    - Select **GET**.
+    - Enter the URL: `http://localhost:8080/tasks/1` (replace 1 with the ID of the task you want to fetch).
+    - Once the request has been sent, the output shows a JSON for the specific task with that ID.
+
+4. Update a Task (PUT /tasks/{id})
+
+    - Select **PUT**.
+    - Enter the URL: `http://localhost:8080/tasks/1` (replace 1 with the ID of the task you want to update).
+    - Go to the **Body** tab > **raw** > **JSON format** and enter the updated details:
+
+    ```bash
+    {
+        "title": "Updated Sample Task",
+        "description": "This is an updated test task",
+        "status": "completed"
+    }
+    ```
+
+    - Once sent, the output displays the updated task's JSON in the response.
+
+5. Delete a Task (DELETE /tasks/{id})
+
+    - Select **DELETE**.
+    - Enter the URL: `http://localhost:8080/tasks/1` (replace 1 with the ID of the task you want to delete).
+    - Once sent, the output displays a 204 No Content response, indicating that the task was successfully deleted.
