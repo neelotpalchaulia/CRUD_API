@@ -44,6 +44,27 @@ func createTaskHandler_Neel(w http.ResponseWriter, r *http.Request) {
 
 // Read function - to retireve a specific task wrt its ID by Srinidhi
 
+func getTaskByIDHandler_Srinidhi(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// id := r.URL.Path[len("/tasks/"):] // Extract ID from URL using the native method
+	id := mux.Vars(r)["id"] // Extract ID from URL using Gorilla Mux
+	for _, task := range tasks {
+		filtered_id := fmt.Sprintf("%d", task.ID)
+		if filtered_id == id {
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(task)
+			return
+		}
+	}
+
+	http.Error(w, "Task not found", http.StatusNotFound)
+}
+
+
 // Update function (Update a task based on ID) created by Nauman
 
 // Delete function (Delete a task based on ID) created by Anjani
