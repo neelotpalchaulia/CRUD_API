@@ -13,22 +13,22 @@ This project demonstrates a RESTful CRUD(Create, Read, Update and Delete) API bu
 
 1. Clone the repository
 
-   ```bash
-   git clone https://github.com/neelotpalchaulia/CLOD2003_week-5_ICLA-3.git
-   cd CLOD2003_week-5_ICLA-3
-   ```
+      ```bash
+      git clone https://github.com/neelotpalchaulia/CLOD2003_week-5_ICLA-3.git
+      cd CLOD2003_week-5_ICLA-3
+      ```
 
 2. **Install Dependencies**: This project uses the `gorilla/mux` package. Install it using:
 
-   ```bash
-   go get -u github.com/gorilla/mux
-   ```
+      ```bash
+      go get -u github.com/gorilla/mux
+      ```
 
 3. Run the application:
 
-   ```bash
-   go run main.go
-   ```
+      ```bash
+      go run main.go
+      ```
 
 4. **API Endpoint:**
 
@@ -44,14 +44,14 @@ Below is a breakdown of the `main.go` file:
 
 ### 1. Imports
 
-   ```bash
-   import (
-   "encoding/json"
-   "fmt"
-   "net/http"
-   "github.com/gorilla/mux"
-   )
-   ```
+      ```bash
+      import (
+      "encoding/json"
+      "fmt"
+      "net/http"
+      "github.com/gorilla/mux"
+      )
+      ```
 
     - `encoding/json`: Handles JSON encoding and decoding.
     - `fmt`: Formats strings for output.
@@ -60,24 +60,24 @@ Below is a breakdown of the `main.go` file:
 
 ### 2. Define your Task struct
 
-   ```bash
-   type Task struct {
-   ID          int    `json:"id"`
-   Title       string `json:"title"`
-   Description string `json:"description"`
-   Status      string `json:"status"`
-   }
-   ```
+      ```bash
+      type Task struct {
+      ID          int    `json:"id"`
+      Title       string `json:"title"`
+      Description string `json:"description"`
+      Status      string `json:"status"`
+      }
+      ```
 
     - Defines a `Task` struct with fields: `ID`, `Title`, `Description`, and `Status`.
     - The struct tags (`json:"fieldname"`) ensure proper JSON encoding/decoding while sending or receiving data.
 
 ### 3. Global Variable
 
-   ```bash
-   var tasks []Task
-   var nextID = 1
-   ```
+      ```bash
+      var tasks []Task
+      var nextID = 1
+      ```
 
     - `tasks`: We declare this slice variable to store the list of tasks.
     - `nextID`: A counter to assign unique IDs to new tasks.
