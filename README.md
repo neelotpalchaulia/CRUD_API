@@ -14,8 +14,8 @@ This project demonstrates a RESTful CRUD(Create, Read, Update and Delete) API bu
 1. Clone the repository
 
       ```bash
-      git clone https://github.com/neelotpalchaulia/CLOD2003_week-5_ICLA-3.git
-      cd CLOD2003_week-5_ICLA-3
+      git clone https://github.com/neelotpalchaulia/CRUD_API.git
+      cd CRUD_API
       ```
 
 2. **Install Dependencies**: This project uses the `gorilla/mux` package. Install it using:
