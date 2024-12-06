@@ -108,7 +108,7 @@ Below is a breakdown of the `main.go` file:
       ```
 
       - Purpose: Handles the creation of a new task.
-      - The `createTaskHandler` checks if the HTTP request method is `POST`. If not, it returns a 405 error.
+      - The `createTaskHandler` checks if the HTTP request method is `POST`. If not, it returns a 404 error.
       - The new code is then decoded from the request body into a `Task` object. If there exists an error, a 400 error is returned.
       - Assigns a unique ID and appends the task to the `tasks` slice.
       - Responds with the created task in JSON format.
